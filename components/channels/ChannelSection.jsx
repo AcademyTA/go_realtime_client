@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 // Components
 import ChannelForm from './ChannelForm.jsx';
 import ChannelList from './ChannelList.jsx';
 
-class ChannelSection extends Component{
+class ChannelSection extends Component {
   render() {
     return (
       <div className='support panel panel-primary'>

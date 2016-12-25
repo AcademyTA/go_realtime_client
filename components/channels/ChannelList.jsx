@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import Channel from './Channel.jsx';
 
-class ChannelList extends Component{
+class ChannelList extends Component {
   render() {
     return (
-      <ul>{
-        this.props.channels.map(channel => {
-          return <Channel
-            channel={ channel }
-            key={ channel.id }
-            { ...this.props }
-          />
-        })
-      }</ul>
+      <ul>
+        {
+          this.props.channels.map(channel => {
+            return <Channel
+              channel={ channel }
+              key={ channel.id }
+              { ...this.props }
+            />
+          })
+        }
+      </ul>
     )
   }
 }
