@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 
 // Components
 import ChannelSection from './channels/ChannelSection.jsx';
+import UserSection    from './users/UserSection.jsx';
+import MessageSection from './messages/MessageSection.jsx';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       channels: [],
+      users: [],
+      messages: [],
+      activeChannel: {}
     };
   }
 
@@ -21,6 +26,21 @@ class App extends Component {
     this.setState({ activeChannel })
   }
 
+  setUserName(name) {
+    let { users } = this.state;
+    users.push({ id: users.length, name });
+    this.setState({ users })
+  }
+
+  addMessage(body){
+    let { messages, users }  = this.state;
+    let { createdAt } = new Date;
+    let author        = users.length > 0 ? users[0].name : 'Anonymous'
+
+    messages.push({ id: messages.length, body });
+    this.setState({ messages })
+  }
+
   render() {
     return (
       <div className='app'>
@@ -30,7 +50,15 @@ class App extends Component {
             addChannel={ this.addChannel.bind(this) }
             setChannel={ this.setChannel.bind(this) }
           />
+          <UserSection
+            { ...this.state }
+            setUserName={ this.setUserName.bind(this) }
+          />
         </div>
+        <MessageSection
+          { ...this.state }
+          addMessage={ this.addMessage.bind(this) }
+        />
       </div>
     )
   }
