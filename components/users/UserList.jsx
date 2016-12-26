@@ -12,7 +12,6 @@ class UserList extends Component {
             return <User
               user={ user }
               key={ user.id }
-              { ...this.props }
             />
           })
         }
